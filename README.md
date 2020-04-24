@@ -13,3 +13,5 @@ Finally, we’ll look at some actual results of applying the Intersection over U
 
 # references
 [!Intersection over Union (IoU) for object detection](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/)
+
+[!Reading and Writing JSON to a File in Python](https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/)
