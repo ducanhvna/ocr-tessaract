@@ -1,0 +1,16 @@
+[
+    {
+        "formatid":1,
+        "width" : 1024,
+        "heigh": 800,
+        "Blockes": [
+            {
+                "x": 50,
+                "y": 50, 
+                "width" : 50,
+                "heigh" : 100
+              }
+  
+          ]
+    }
+]
