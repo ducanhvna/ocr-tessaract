@@ -3,6 +3,32 @@
 # Đầu vào của phương pháp là một ảnh
 # Đầu ra của phương pháp là một bộ meta format theo các level cua ảnh
 
+######
+# Hàm ghi file ra json. Đầu vào của ham là các thông tin width, heigh và thông tin cac  block
+######
+import json
+
+data = {}
+data['people'] = []
+data['people'].append({
+    'name': 'Scott',
+    'website': 'stackabuse.com',
+    'from': 'Nebraska'
+})
+data['people'].append({
+    'name': 'Larry',
+    'website': 'google.com',
+    'from': 'Michigan'
+})
+data['people'].append({
+    'name': 'Tim',
+    'website': 'apple.com',
+    'from': 'Alabama'
+})
+
+with open('data.txt', 'w') as outfile:
+    json.dump(data, outfile)
+
 # bước 1 thử ảnh đầu vào là image.jpg
 
 
@@ -43,4 +69,6 @@ cv2.imshow('img', img)
 ## _case2_ use invoce-sample.jpg
 cv2.waitKey(0)
 #cv2.imwrite('_8_level_case_value1.jpg',img)
+
+
 
