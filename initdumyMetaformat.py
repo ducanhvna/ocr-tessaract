@@ -29,6 +29,15 @@ data['people'].append({
 with open('data.txt', 'w') as outfile:
     json.dump(data, outfile)
 
+### hàm read file 
+# with open('data.txt') as json_file:
+#     data = json.load(json_file)
+#     for p in data['people']:
+#         print('Name: ' + p['name'])
+#         print('Website: ' + p['website'])
+#         print('From: ' + p['from'])
+#         print('')
+
 # bước 1 thử ảnh đầu vào là image.jpg
 
 
@@ -55,6 +64,9 @@ n_boxes = len(d['level'])
 
 d = pytesseract.image_to_data(img, output_type=Output.DICT)
 print(d['level'])
+
+## Now Initialize json data
+
 # n_boxes = len(d['level'])
 print ('level: ',n_boxes)
 for i in range(n_boxes):
@@ -67,6 +79,15 @@ cv2.imshow('img', img)
 
 ## _case_ use image.jpb
 ## _case2_ use invoce-sample.jpg
+
+## current write the json
+width = img.size().width 
+height = img.size().height
+
+
+
+
+
 cv2.waitKey(0)
 #cv2.imwrite('_8_level_case_value1.jpg',img)
 
