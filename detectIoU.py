@@ -120,51 +120,51 @@ print ('level: ',n_boxes)
 
 ##### Solution2 trong tất cả các vùng có iou >0 thì xét
 ##### Buoc 1: Tim ra thanh phan nao to nhat
-for p in data['blocks']:
-    boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
+# for p in data['blocks']:
+#     boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
 
-    index = -1
-    maxvalue = 0
-    avaiablelist = []
-    for i in range(n_boxes):
-        x0 = d['left'][i] / dx
-        y0 = d['top'][i] / dy
-        x1 = (d['left'][i] + d['width'][i]) / dx
-        y1 = (d['top'][i] + d['height'][i]) / dy
+#     index = -1
+#     maxvalue = 0
+#     avaiablelist = []
+#     for i in range(n_boxes):
+#         x0 = d['left'][i] / dx
+#         y0 = d['top'][i] / dy
+#         x1 = (d['left'][i] + d['width'][i]) / dx
+#         y1 = (d['top'][i] + d['height'][i]) / dy
 
-        boxB = [x0, y0, x1, y1]
+#         boxB = [x0, y0, x1, y1]
         
-        iou = bb_intersection_over_union(boxA, boxB)
-        if iou >0: 
-            avaiablelist.append(i)
-        if iou > maxvalue:
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou >0: 
+#             avaiablelist.append(i)
+#         if iou > maxvalue:
             
-            index = i
-            maxvalue = iou
-    if index > -1 :
-        # print(d['level'][i])
-        (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
+#             index = i
+#             maxvalue = iou
+#     if index > -1 :
+#         # print(d['level'][i])
+#         (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
 
-        for i in avaiablelist:
-            x0 = min(d['left'][i] / dx, x/dx)
-            y0 = min(d['top'][i] / dy, y/dy)
-            x1 = max((d['left'][i] + d['width'][i]) / dx, (x+w)/dx)
-            y1 = max((d['top'][i] + d['height'][i]) / dy, (y+h)/dy)
+#         for i in avaiablelist:
+#             x0 = min(d['left'][i] / dx, x/dx)
+#             y0 = min(d['top'][i] / dy, y/dy)
+#             x1 = max((d['left'][i] + d['width'][i]) / dx, (x+w)/dx)
+#             y1 = max((d['top'][i] + d['height'][i]) / dy, (y+h)/dy)
 
-            boxB = [x0, y0, x1, y1]
+#             boxB = [x0, y0, x1, y1]
         
-            iou = bb_intersection_over_union(boxA, boxB)
-            if iou > maxvalue:
-                x = int(x0)
-                y = int(y0)
-                w = int(x1 - x0)
-                h = int(y1 - y0)
-                maxvalue = iou    
-        print(x)
-        print(y)
-        print(w)
-        print(h)
-        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+#             iou = bb_intersection_over_union(boxA, boxB)
+#             if iou > maxvalue:
+#                 x = int(x0)
+#                 y = int(y0)
+#                 w = int(x1 - x0)
+#                 h = int(y1 - y0)
+#                 maxvalue = iou    
+#         print(x)
+#         print(y)
+#         print(w)
+#         print(h)
+#         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
 #### Solution 3 Merge tung phia 1
 # for p in data['blocks']:
@@ -227,6 +227,69 @@ for p in data['blocks']:
 #         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
 ##### Solution 4: vet can
+# from itertools import combinations 
+  
+# # Get all combinations of [1, 2, 3] 
+# # and length 2 
+# comb = combinations([1, 2, 3], 2) 
+  
+# # Print the obtained combinations 
+# for i in list(comb): 
+#     print (i)
+
+# for p in data['blocks']:
+#     boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
+
+#     index = -1
+#     maxvalue = 0
+#     avaiablelist = []
+#     for i in range(n_boxes):
+#         x0 = d['left'][i] / dx
+#         y0 = d['top'][i] / dy
+#         x1 = (d['left'][i] + d['width'][i]) / dx
+#         y1 = (d['top'][i] + d['height'][i]) / dy
+
+#         boxB = [x0, y0, x1, y1]
+        
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou > 0: 
+#             avaiablelist.append(i)
+#     comb = combinations(avaiablelist, min(len(avaiablelist) ,3) ) 
+#     (x,y,w,h)=(0,0,0,0)
+
+#     # Print the obtained combinations 
+#     for pi in list(comb): 
+#         print (pi)
+#         listx0 = []
+#         listy0 = []
+#         listx1 = []
+#         listy1 = []
+
+#         for i in pi:
+#             listx0.append(d['left'][i] / dx)
+#             listy0.append(d['top'][i] / dy)
+#             listx1.append((d['left'][i] + d['width'][i]) / dx)
+#             listy1.append((d['top'][i] + d['height'][i]) / dy)
+        
+        
+        
+#         x0 = min(listx0)
+#         y0 = min(listy0)
+#         x1 = max(listx1)
+#         y1 = max(listy1)
+
+#         boxB = [x0, y0, x1, y1]
+        
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou > maxvalue:
+#             maxvalue = iou
+#             x = int(x0)
+#             y = int(y0)
+#             xn = int(x1)
+#             yn = int(y1)
+    
+#     cv2.rectangle(img, (x, y), (xn, yn), (0, 255, 0), 2)
+##### Solution 5: vet can lan luot
 from itertools import combinations 
   
 # Get all combinations of [1, 2, 3] 
@@ -236,6 +299,111 @@ comb = combinations([1, 2, 3], 2)
 # Print the obtained combinations 
 for i in list(comb): 
     print (i)
+
+for p in data['blocks']:
+    boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
+
+    index = -1
+    maxvalue = 0
+#     for i in range(n_boxes):
+#         x0 = d['left'][i] / dx
+#         y0 = d['top'][i] / dy
+#         x1 = (d['left'][i] + d['width'][i]) / dx
+#         y1 = (d['top'][i] + d['height'][i]) / dy
+
+#         boxB = [x0, y0, x1, y1]
+        
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou > maxvalue:
+#             index = i
+#             maxvalue = iou
+#     if index > -1 :
+#         # print(d['level'][i])
+#         (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
+#
+
+    avaiablelist = []
+    for i in range(n_boxes):
+        x0 = d['left'][i] / dx
+        y0 = d['top'][i] / dy
+        x1 = (d['left'][i] + d['width'][i]) / dx
+        y1 = (d['top'][i] + d['height'][i]) / dy
+
+        boxB = [x0, y0, x1, y1]
+        
+        iou = bb_intersection_over_union(boxA, boxB)
+        if iou > 0: 
+            avaiablelist.append(i)
+
+        if iou > maxvalue:
+            index = i
+            maxvalue = iou
+            
+    comb = combinations(avaiablelist, min(len(avaiablelist) ,3) ) 
+    (x,y,w,h)=(0,0,0,0)
+
+    # Print the obtained combinations 
+    for pi in list(comb): 
+        print (pi)
+        listx0 = []
+        listy0 = []
+        listx1 = []
+        listy1 = []
+
+        for i in pi:
+            listx0.append(d['left'][i] / dx)
+            listy0.append(d['top'][i] / dy)
+            listx1.append((d['left'][i] + d['width'][i]) / dx)
+            listy1.append((d['top'][i] + d['height'][i]) / dy)
+        
+        
+        # ---
+        x0 = min(listx0)
+        y0 = min(listy0)
+        x1 = max(listx1)
+        y1 = max(listy1)
+
+        boxB = [x0, y0, x1, y1]
+        
+        iou = bb_intersection_over_union(boxA, boxB)
+        if iou > maxvalue:
+            maxvalue = iou
+            x = int(x0)
+            y = int(y0)
+            xn = int(x1)
+            yn = int(y1)
+        # --- only x
+        x0 = min(listx0)
+        y0 = boxA[1]
+        x1 = max(listx1)
+        y1 = boxA[3]
+
+        boxB = [x0, y0, x1, y1]
+        
+        iou = bb_intersection_over_union(boxA, boxB)
+        if iou > maxvalue:
+            maxvalue = iou
+            x = int(x0)
+            y = int(y0)
+            xn = int(x1)
+            yn = int(y1)
+        # --- onlyy
+        x0 = boxA[0]
+        y0 = min(listy0)
+        x1 = boxA[2]
+        y1 = max(listy1)
+
+        boxB = [x0, y0, x1, y1]
+        
+        iou = bb_intersection_over_union(boxA, boxB)
+        if iou > maxvalue:
+            maxvalue = iou
+            x = int(x0)
+            y = int(y0)
+            xn = int(x1)
+            yn = int(y1)
+    cv2.rectangle(img, (x, y), (xn, yn), (0, 255, 0), 2)
+
 
 cv2.imshow('img', img)
 
