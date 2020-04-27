@@ -135,8 +135,10 @@ for p in data['blocks']:
         boxB = [x0, y0, x1, y1]
         
         iou = bb_intersection_over_union(boxA, boxB)
-        if iou > maxvalue:
+        if iou >0: 
             avaiablelist.append(i)
+        if iou > maxvalue:
+            
             index = i
             maxvalue = iou
     if index > -1 :
@@ -163,6 +165,77 @@ for p in data['blocks']:
         print(w)
         print(h)
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+#### Solution 3 Merge tung phia 1
+# for p in data['blocks']:
+#     boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
+
+#     index = -1
+#     maxvalue = 0
+#     avaiablelist = []
+#     for i in range(n_boxes):
+#         x0 = d['left'][i] / dx
+#         y0 = d['top'][i] / dy
+#         x1 = (d['left'][i] + d['width'][i]) / dx
+#         y1 = (d['top'][i] + d['height'][i]) / dy
+
+#         boxB = [x0, y0, x1, y1]
+        
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou >0: 
+#             avaiablelist.append(i)
+#         if iou > maxvalue:
+            
+#             index = i
+#             maxvalue = iou
+#     if index > -1 :
+#         # print(d['level'][i])
+#         (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
+
+#         for i in avaiablelist:
+#             x0 = d['left'][i] / dx
+#             y0 = min(d['top'][i] / dy, y/dy)
+#             x1 = (d['left'][i] + d['width'][i]) / dx
+#             y1 = max((d['top'][i] + d['height'][i]) / dy, (y+h)/dy)
+
+#             boxB = [x0, y0, x1, y1]
+        
+#             iou = bb_intersection_over_union(boxA, boxB)
+#             if iou > maxvalue:
+#                 x = int(x0)
+#                 y = int(y0)
+#                 w = int(x1 - x0)
+#                 h = int(y1 - y0)
+#                 maxvalue = iou 
+
+#             ############
+#             x0 = min(d['left'][i] / dx, x/dx)
+#             y0 = d['top'][i] / dy
+#             x1 = max((d['left'][i] + d['width'][i]) / dx, (x+w)/dx)
+#             y1 = (d['top'][i] + d['height'][i]) / dy
+
+#             boxB = [x0, y0, x1, y1]
+        
+#             iou = bb_intersection_over_union(boxA, boxB)
+#             if iou > maxvalue:
+#                 x = int(x0)
+#                 y = int(y0)
+#                 w = int(x1 - x0)
+#                 h = int(y1 - y0)
+#                 maxvalue = iou    
+        
+#         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+##### Solution 4: vet can
+from itertools import combinations 
+  
+# Get all combinations of [1, 2, 3] 
+# and length 2 
+comb = combinations([1, 2, 3], 2) 
+  
+# Print the obtained combinations 
+for i in list(comb): 
+    print (i)
 
 cv2.imshow('img', img)
 

@@ -13,6 +13,24 @@
             "top": 60,
             "width": 400,
             "height": 50
+        },
+        {
+            "left": 1,
+            "top": 113,
+            "width": 393,
+            "height": 50
+        },
+        {
+            "left": 400,
+            "top": 58,
+            "width": 380,
+            "height": 100
+        },
+        {
+            "left": 1,
+            "top": 168,
+            "width": 394,
+            "height": 100
         }
        
     ],
