@@ -403,7 +403,7 @@ for p in data['blocks']:
             xn = int(x1)
             yn = int(y1)
     cv2.rectangle(img, (x, y), (xn, yn), (0, 255, 0), 2)
-
+## Solution cuoi cung su dung weigh heigh . TBD
 
 cv2.imshow('img', img)
 
