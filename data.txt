@@ -1,1 +1,1 @@
-{"id": "format1", "name": "dumy data", "blocks": [{"left": 110, "top": 0, "width": 670, "height": 40}, {"left": 4, "top": 60, "width": 387, "height": 40}, {"left": 3, "top": 75, "width": 281, "height": 28}, {"left": 407, "top": 60, "width": 372, "height": 27}, {"left": 403, "top": 280, "width": 231, "height": 12}], "width": 786, "height": 1024}
+{"id": "format1", "name": "dumy data", "blocks": [{"left": 150, "top": 0, "width": 625, "height": 50}, {"left": 2, "top": 60, "width": 400, "height": 50}], "width": 786, "height": 1024}
