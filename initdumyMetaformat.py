@@ -9,25 +9,28 @@
 import json
 
 data = {}
-data['people'] = []
-data['people'].append({
-    'name': 'Scott',
-    'website': 'stackabuse.com',
-    'from': 'Nebraska'
-})
-data['people'].append({
-    'name': 'Larry',
-    'website': 'google.com',
-    'from': 'Michigan'
-})
-data['people'].append({
-    'name': 'Tim',
-    'website': 'apple.com',
-    'from': 'Alabama'
-})
+data['id'] = 'format1'
+data['name'] = 'dumy data'
+data['blocks'] = []
 
-with open('data.txt', 'w') as outfile:
-    json.dump(data, outfile)
+# data['people'].append({
+#     'name': 'Scott',
+#     'website': 'stackabuse.com',
+#     'from': 'Nebraska'
+# })
+# data['people'].append({
+#     'name': 'Larry',
+#     'website': 'google.com',
+#     'from': 'Michigan'
+# })
+# data['people'].append({
+#     'name': 'Tim',
+#     'website': 'apple.com',
+#     'from': 'Alabama'
+# })
+
+# with open('data.txt', 'w') as outfile:
+#     json.dump(data, outfile)
 
 ### hàm read file 
 # with open('data.txt') as json_file:
@@ -46,6 +49,13 @@ import pytesseract
 from pytesseract import Output
 import cv2
 img = cv2.imread('image.jpg')
+# Add width heigh to size
+
+height, width, channels = img.shape
+
+data['width'] = width
+data['height'] = height
+
 
 d = pytesseract.image_to_data(img, output_type=Output.DICT)
 
@@ -70,10 +80,17 @@ print(d['level'])
 # n_boxes = len(d['level'])
 print ('level: ',n_boxes)
 for i in range(n_boxes):
-    if d['level'][i] == 5 :
+    if d['level'][i] == 2 :
+        blockdata = {}
         print(d['text'][i])
         (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        blockdata['left'] = x
+        blockdata['top'] = y
+        blockdata['width'] = w
+        blockdata['height'] = h
+        data['blocks'].append(blockdata)
+
 
 cv2.imshow('img', img)
 
@@ -81,13 +98,8 @@ cv2.imshow('img', img)
 ## _case2_ use invoce-sample.jpg
 
 ## current write the json
-width = img.size().width 
-height = img.size().height
-
-
-
-
-
+with open('data.txt', 'w') as outfile:
+    json.dump(data, outfile)
 cv2.waitKey(0)
 #cv2.imwrite('_8_level_case_value1.jpg',img)
 
