@@ -95,28 +95,28 @@ print('dy: ' + str(dy))
 n_boxes = len(d['level'])
 print ('level: ',n_boxes)
 ######### Solution 1: vùng đc chọn là vùng có iou to nhất
-# for p in data['blocks']:
-#     boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
+for p in data['blocks']:
+    boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
 
-#     index = -1
-#     maxvalue = 0
+    index = -1
+    maxvalue = 0
 
-#     for i in range(n_boxes):
-#         x0 = d['left'][i] / dx
-#         y0 = d['top'][i] / dy
-#         x1 = (d['left'][i] + d['width'][i]) / dx
-#         y1 = (d['top'][i] + d['height'][i]) / dy
+    for i in range(n_boxes):
+        x0 = d['left'][i] / dx
+        y0 = d['top'][i] / dy
+        x1 = (d['left'][i] + d['width'][i]) / dx
+        y1 = (d['top'][i] + d['height'][i]) / dy
 
-#         boxB = [x0, y0, x1, y1]
+        boxB = [x0, y0, x1, y1]
         
-#         iou = bb_intersection_over_union(boxA, boxB)
-#         if iou > maxvalue:
-#             index = i
-#             maxvalue = iou
-#     if index > -1 :
-#         # print(d['level'][i])
-#         (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
-#         cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        iou = bb_intersection_over_union(boxA, boxB)
+        if iou > maxvalue:
+            index = i
+            maxvalue = iou
+    if index > -1 :
+        # print(d['level'][i])
+        (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
 ##### Solution2 trong tất cả các vùng có iou >0 thì xét
 ##### Buoc 1: Tim ra thanh phan nao to nhat
@@ -290,21 +290,39 @@ print ('level: ',n_boxes)
     
 #     cv2.rectangle(img, (x, y), (xn, yn), (0, 255, 0), 2)
 ##### Solution 5: vet can lan luot
-from itertools import combinations 
+# from itertools import combinations 
   
-# Get all combinations of [1, 2, 3] 
-# and length 2 
-comb = combinations([1, 2, 3], 2) 
+# # Get all combinations of [1, 2, 3] 
+# # and length 2 
+# comb = combinations([1, 2, 3], 2) 
   
-# Print the obtained combinations 
-for i in list(comb): 
-    print (i)
+# # Print the obtained combinations 
+# for i in list(comb): 
+#     print (i)
 
-for p in data['blocks']:
-    boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
+# for p in data['blocks']:
+#     boxA = [p['left'], p['top'], p['left'] + p['width'], p['top'] + p['height'] ]
 
-    index = -1
-    maxvalue = 0
+#     index = -1
+#     maxvalue = 0
+# #     for i in range(n_boxes):
+# #         x0 = d['left'][i] / dx
+# #         y0 = d['top'][i] / dy
+# #         x1 = (d['left'][i] + d['width'][i]) / dx
+# #         y1 = (d['top'][i] + d['height'][i]) / dy
+
+# #         boxB = [x0, y0, x1, y1]
+        
+# #         iou = bb_intersection_over_union(boxA, boxB)
+# #         if iou > maxvalue:
+# #             index = i
+# #             maxvalue = iou
+# #     if index > -1 :
+# #         # print(d['level'][i])
+# #         (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
+# #
+
+#     avaiablelist = []
 #     for i in range(n_boxes):
 #         x0 = d['left'][i] / dx
 #         y0 = d['top'][i] / dy
@@ -314,98 +332,81 @@ for p in data['blocks']:
 #         boxB = [x0, y0, x1, y1]
         
 #         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou > 0: 
+#             avaiablelist.append(i)
+
 #         if iou > maxvalue:
 #             index = i
 #             maxvalue = iou
-#     if index > -1 :
-#         # print(d['level'][i])
-#         (x, y, w, h) = (d['left'][index], d['top'][index], d['width'][index], d['height'][index])
-#
-
-    avaiablelist = []
-    for i in range(n_boxes):
-        x0 = d['left'][i] / dx
-        y0 = d['top'][i] / dy
-        x1 = (d['left'][i] + d['width'][i]) / dx
-        y1 = (d['top'][i] + d['height'][i]) / dy
-
-        boxB = [x0, y0, x1, y1]
-        
-        iou = bb_intersection_over_union(boxA, boxB)
-        if iou > 0: 
-            avaiablelist.append(i)
-
-        if iou > maxvalue:
-            index = i
-            maxvalue = iou
             
-    comb = combinations(avaiablelist, min(len(avaiablelist) ,3) ) 
-    (x,y,w,h)=(0,0,0,0)
+#     comb = combinations(avaiablelist, min(len(avaiablelist) ,3) ) 
+#     (x,y,w,h)=(0,0,0,0)
 
-    # Print the obtained combinations 
-    for pi in list(comb): 
-        print (pi)
-        listx0 = []
-        listy0 = []
-        listx1 = []
-        listy1 = []
+#     # Print the obtained combinations 
+#     for pi in list(comb): 
+#         print (pi)
+#         listx0 = []
+#         listy0 = []
+#         listx1 = []
+#         listy1 = []
 
-        for i in pi:
-            listx0.append(d['left'][i] / dx)
-            listy0.append(d['top'][i] / dy)
-            listx1.append((d['left'][i] + d['width'][i]) / dx)
-            listy1.append((d['top'][i] + d['height'][i]) / dy)
+#         for i in pi:
+#             listx0.append(d['left'][i] / dx)
+#             listy0.append(d['top'][i] / dy)
+#             listx1.append((d['left'][i] + d['width'][i]) / dx)
+#             listy1.append((d['top'][i] + d['height'][i]) / dy)
         
         
-        # ---
-        x0 = min(listx0)
-        y0 = min(listy0)
-        x1 = max(listx1)
-        y1 = max(listy1)
+#         # ---
+#         x0 = min(listx0)
+#         y0 = min(listy0)
+#         x1 = max(listx1)
+#         y1 = max(listy1)
 
-        boxB = [x0, y0, x1, y1]
+#         boxB = [x0, y0, x1, y1]
         
-        iou = bb_intersection_over_union(boxA, boxB)
-        if iou > maxvalue:
-            maxvalue = iou
-            x = int(x0)
-            y = int(y0)
-            xn = int(x1)
-            yn = int(y1)
-        # --- only x
-        x0 = min(listx0)
-        y0 = boxA[1]
-        x1 = max(listx1)
-        y1 = boxA[3]
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou > maxvalue:
+#             maxvalue = iou
+#             x = int(x0)
+#             y = int(y0)
+#             xn = int(x1)
+#             yn = int(y1)
+#         # --- only x
+#         x0 = min(listx0)
+#         y0 = boxA[1]
+#         x1 = max(listx1)
+#         y1 = boxA[3]
 
-        boxB = [x0, y0, x1, y1]
+#         boxB = [x0, y0, x1, y1]
         
-        iou = bb_intersection_over_union(boxA, boxB)
-        if iou > maxvalue:
-            maxvalue = iou
-            x = int(x0)
-            y = int(y0)
-            xn = int(x1)
-            yn = int(y1)
-        # --- onlyy
-        x0 = boxA[0]
-        y0 = min(listy0)
-        x1 = boxA[2]
-        y1 = max(listy1)
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou > maxvalue:
+#             maxvalue = iou
+#             x = int(x0)
+#             y = int(y0)
+#             xn = int(x1)
+#             yn = int(y1)
+#         # --- onlyy
+#         x0 = boxA[0]
+#         y0 = min(listy0)
+#         x1 = boxA[2]
+#         y1 = max(listy1)
 
-        boxB = [x0, y0, x1, y1]
+#         boxB = [x0, y0, x1, y1]
         
-        iou = bb_intersection_over_union(boxA, boxB)
-        if iou > maxvalue:
-            maxvalue = iou
-            x = int(x0)
-            y = int(y0)
-            xn = int(x1)
-            yn = int(y1)
-    cv2.rectangle(img, (x, y), (xn, yn), (0, 255, 0), 2)
+#         iou = bb_intersection_over_union(boxA, boxB)
+#         if iou > maxvalue:
+#             maxvalue = iou
+#             x = int(x0)
+#             y = int(y0)
+#             xn = int(x1)
+#             yn = int(y1)
+#     cv2.rectangle(img, (x, y), (xn, yn), (0, 255, 0), 2)
 ## Solution cuoi cung su dung weigh heigh . TBD
 
 cv2.imshow('img', img)
+
 
 ## _case_ use image.jpb
 ## _case2_ use invoce-sample.jpg
@@ -414,3 +415,10 @@ cv2.imshow('img', img)
 with open('data.txt', 'w') as outfile:
     json.dump(data, outfile)
 cv2.waitKey(0)
+
+# Filename 
+filename = 'Images/savedImageSolution1.jpg'
+  
+# Using cv2.imwrite() method 
+# Saving the image 
+cv2.imwrite(filename, img) 
