@@ -12,7 +12,7 @@ Finally, we’ll look at some actual results of applying the Intersection over U
 # Idea
 Build meta data by lableImage tool
 
-[! build meta data data by lbl Image tool](Images/BuildMetadata.png)
+![build meta data data by lbl Image tool](Images/BuildMetadata.png)
 
 Convert to json fomat
 
@@ -45,13 +45,13 @@ python detecIoU.py
 # Result
 ## Solution 1: Use only one area (textblock) - which has maximum IoU value 
 
-[!Solution 1](Images/savedImageSolution1.jpg)
+![Solution 1](Images/savedImageSolution1.jpg)
 
 ## Solution 2: Use cobination 3 of block to bulid result
 
-[!Solution 2](Images/savedImageSolution5.jpg)
+![Solution 2](Images/savedImageSolution5.jpg)
 
 # references
-[!Intersection over Union (IoU) for object detection](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/)
+![Intersection over Union (IoU) for object detection](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/)
 
-[!Reading and Writing JSON to a File in Python](https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/)
+![Reading and Writing JSON to a File in Python](https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/)
