@@ -9,7 +9,11 @@ I’ll also provide a Python implementation of Intersection over Union that you 
 
 Finally, we’ll look at some actual results of applying the Intersection over Union evaluation metric to a set of ground-truth and predicted bounding boxes.
 
-
+# Installation
+```bash
+pip install -r requirements.txt
+python detecIoU.py
+```
 
 # references
 [!Intersection over Union (IoU) for object detection](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/)
