@@ -21,7 +21,7 @@ def ExtractData(folderpath, outputfolder):
 
 
     for filepath in mylist:
-        foldername = os.path.basename(filepath)
+        foldername = os.path.basename(os.path.splitext(filepath)[0])
         # Load Image
         img = cv2.imread('image.jpg')
         # get dimensions of image
@@ -83,11 +83,7 @@ def ExtractData(folderpath, outputfolder):
         n_boxes = len(d['text'])
         n_boxes = len(d['level'])
         print ('level: ',n_boxes)
-        for i in range(n_boxes):
-            if int(d['conf'][i]) > 60:
-                (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
-                img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
+        
         d = pytesseract.image_to_data(img, output_type=Output.DICT)
         keys = list(d.keys())
 
@@ -98,7 +94,7 @@ def ExtractData(folderpath, outputfolder):
         filelines = []
         for i in range(n_boxes):
             print(d['text'][i] + '\n')
-            if  d['text'][i].strip() is not '':
+            if  (d['text'][i].strip() != '') and (int(d['conf'][i]) > 10):
                 (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
                 img = cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
