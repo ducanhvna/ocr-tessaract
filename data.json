@@ -94,6 +94,18 @@
             "top": 490,
             "width": 132,
             "height": 45
+        },
+        {
+            "left": 675,
+            "top": 490,
+            "width": 132,
+            "height": 45
+        },
+        {
+            "left": 540,
+            "top": 540,
+            "width": 132,
+            "height": 25
         }
 
     ],
