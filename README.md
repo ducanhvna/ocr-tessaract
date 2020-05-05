@@ -51,6 +51,12 @@ python detecIoU.py
 
 ![Solution 2](Images/savedImageSolution5.jpg)
 
+# Other method
+## Use tessaract to annotation word level
+
+```bash
+python tesseract2wordLevel.py 
+```
 # references
 [Intersection over Union (IoU) for object detection](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/)
 
