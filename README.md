@@ -55,6 +55,7 @@ python detecIoU.py
 ## Use tessaract to annotation word level
 
 ```bash
+conda install -c conda-forge tesserocr
 python tesseract2wordLevel.py 
 ```
 # references

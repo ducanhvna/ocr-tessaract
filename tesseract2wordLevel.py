@@ -3,6 +3,7 @@
 #   Step 1: Use tesseract recognition
 #   Step 2: convert all text block to list
 # List all file
+
 import pytesseract
 from pytesseract import Output
 import cv2
@@ -146,5 +147,3 @@ outputfoder = 'testTesseract2Word'
 if not os.path.exists(outputfoder):
     os.makedirs(outputfoder)
 ExtractData(inputfolder, outputfoder)
-
-
