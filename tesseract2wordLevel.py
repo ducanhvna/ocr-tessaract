@@ -39,7 +39,7 @@ def ExtractData(folderpath, outputfolder):
         d = pytesseract.image_to_data(img, output_type=Output.DICT)
 
         ## Incase print all
-        d = pytesseract.image_to_data(img, output_type=Output.DICT)
+        # d = pytesseract.image_to_data(img, output_type=Output.DICT)
 
         data = ET.Element('annotation')
         folder = ET.SubElement(data, 'folder')
